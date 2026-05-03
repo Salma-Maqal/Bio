@@ -483,7 +483,56 @@
 .footer .footer-item .btn-link {
     line-height: 35px;
     color: rgba(255, 255, 255, .5);
-    transition: 0.5s;
+    transition: 0.5s;/* Background shared */
+.auth-bg {
+    min-height: 100vh;
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+/* Overlay */
+.auth-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+/* Card shared */
+.auth-card {
+    position: relative;
+    width: 420px;
+    padding: 30px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+/* Inputs shared */
+.input-style {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.input-style:focus {
+    box-shadow: 0 0 8px #81c408;
+    outline: none;
+}
+
+/* Button shared */
+.btn-style {
+    background: #81c408;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btn-style:hover {
+    background: #6aa306;
+}
 }
 
 .footer .footer-item .btn-link:hover {
@@ -495,3 +544,56 @@
 }
 /*** Footer End ***/
 
+.auth-bg {
+    min-height: 100vh;
+    background: url('../img/auth.png') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+.auth-card,
+.login-card {
+    position: relative;
+    z-index: 2;
+    width: 420px;
+    padding: 30px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.input-style {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+}
+
+.input-style::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.input-style:focus {
+    box-shadow: none;
+    border: 1px solid #81c408;
+}
+.btn-style {
+    background: #81c408;
+    color: white;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-style:hover {
+    background: #6aa006;
+    transform: scale(1.03);
+}

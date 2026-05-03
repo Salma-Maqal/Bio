@@ -1,0 +1,50 @@
+{% extends 'base_auth.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+<div class="auth-bg d-flex justify-content-center align-items-center">
+
+    <div class="login-card">
+
+        <h2 class="text-center mb-4" style="color:#81c408;">
+            Sign In
+        </h2>
+
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <form method="post">
+
+            <input type="email"
+                   name="email"
+                   value="{{ last_username }}"
+                   class="form-control mb-3 input-style"
+                   placeholder="Email"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   class="form-control mb-4 input-style"
+                   placeholder="Password"
+                   required>
+
+            <input type="hidden"
+                   name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn w-100 btn-style">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

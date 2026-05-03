@@ -1,0 +1,68 @@
+{% extends 'base_auth.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div class="auth-bg d-flex justify-content-center align-items-center">
+
+    <div class="auth-card">
+
+        <h3 class="text-center mb-4" style="color:#81c408;">
+            Create Account
+        </h3>
+
+        {{ form_start(registrationForm) }}
+
+            <div class="mb-3">
+                {{ form_row(registrationForm.email, {
+                    attr: {
+                        class: 'form-control input-style',
+                        placeholder: 'Enter your email'
+                    }
+                }) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(registrationForm.firstName, {
+                    attr: {
+                        class: 'form-control input-style',
+                        placeholder: 'First Name'
+                    }
+                }) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(registrationForm.lastName, {
+                    attr: {
+                        class: 'form-control input-style',
+                        placeholder: 'Last Name'
+                    }
+                }) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password',
+                    attr: {
+                        class: 'form-control input-style',
+                        placeholder: 'Enter password'
+                    }
+                }) }}
+            </div>
+
+            <div class="mb-3 text-white">
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn w-100 btn-style">
+                Register
+            </button>
+
+        {{ form_end(registrationForm) }}
+
+    </div>
+
+</div>
+
+{% endblock %}
