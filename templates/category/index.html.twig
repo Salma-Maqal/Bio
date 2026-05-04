@@ -1,20 +1,38 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_CRUD.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Catégories{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <h1> Catégories</h1> <br><br>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/RPC/Desktop/ProjectISIUM/Symfony/Bio/src/Controller/CategoryController.php</code></li>
-        <li>Your template at <code>C:/Users/RPC/Desktop/ProjectISIUM/Symfony/Bio/templates/category/index.html.twig</code></li>
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de la catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('app_category_update', {'id': category.id}) }}" class="btn btn-sm btn-primary">Modifier</a> | <a href="{{ path('app_category_delete', {'id': category.id}) }}" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">Supprimer</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" class="text-center">
+                    <p>Aucune catégorie à afficher pour l'instant</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('app_category_new') }}" class="btn btn-success">Ajouter une catégorie</a>
 </div>
 {% endblock %}

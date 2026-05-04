@@ -2,15 +2,13 @@
 
 {% block body %}
 <div class="container">
-    <div class="form"><br>
-        <h2>Ajouter une catégorie</h2><br>
+    <div class="form">
+        <h2>Modifier une catégorie</h2><br>
         {{ form_start(form) }}
         {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
         <br>
-        <button type="submit" class="btn btn-primary mt-3">Sauvegarder</button>
-        
+        <input type="submit" class="btn btn-primary mt-3" value="Modifier">
         {{ form_end(form) }}
-        
     </div>
 </div>
 {% endblock %}
