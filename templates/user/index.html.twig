@@ -1,0 +1,50 @@
+{% extends 'base_CRUD.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+{% block body %}
+<div class="container ">
+<br><br>
+<h1 class="text-center">Utilisateurs</h1>
+{% include 'layouts/_flash_message.html.twig' %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Role</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>
+                {%if ('ROLE_ADMIN' in user.roles)%}
+                      Administrateur
+                {%elseif ('ROLE_CLIENT'in user.roles)%}
+                     Client
+                {%else  %}
+                    Visiteur
+                {%endif%}
+                </td>
+            <td>
+                {% if ('ROLE_ADMIN' in user.roles)==false %}
+
+                <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')" href="{{ path('app_user_remove', {'id': user.id}) }}" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                {% endif  %}
+            </td>
+        </tr>
+            
+        {% endfor %}
+        </table>
+        </div>
+    
+{% endblock %}
